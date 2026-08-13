@@ -1,156 +1,119 @@
-# 🃏 Poker Monte Carlo Analytics Engine
+# Poker Engine
 
-A Python-based Texas Hold'em Poker Odds Calculator and Analytics Engine that uses **Monte Carlo Simulation** to estimate winning probabilities against multiple opponents.
+A modular Texas Hold'em poker engine built in Python.
 
-The project evaluates poker hands, simulates thousands of random games, exports statistical data, and generates graphical analysis.
+The project started as a probability calculator and evolved into a structured poker engine capable of evaluating hands and performing large numbers of simulations.
 
----
+## Features
 
-## 🚀 Features
+* Texas Hold'em hand evaluation
+* Card and deck handling
+* Community board handling
+* Player hand evaluation
+* Poker hand ranking
+* Monte Carlo simulation
+* Win/equity estimation
+* Modular architecture
 
-* ✅ Texas Hold'em hand evaluator
-* ✅ Monte Carlo simulation engine
-* ✅ Supports **1–8 opponents**
-* ✅ Supports **Preflop, Flop, Turn, and River** analysis
-* ✅ Detects all poker hands:
+## How It Works
 
-  * High Card
-  * One Pair
-  * Two Pair
-  * Three of a Kind
-  * Straight
-  * Flush
-  * Full House
-  * Four of a Kind
-  * Straight Flush
-  * Royal Flush
-* ✅ Automatic input validation
-* ✅ Best 5-card hand selection from 7 cards
-* ✅ Win / Loss / Tie probability calculation
-* ✅ Hand frequency analytics
-* ✅ CSV export of simulation results
-* ✅ Win Rate vs Opponents graph generation
-* ✅ Modular project architecture
+The engine takes the known cards and simulates possible remaining game states.
 
----
+A simplified flow looks like:
 
-## 📂 Project Structure
-
-```
-poker_project/
-│
-├── main.py            # Entry point
-├── cards.py           # Card constants and mappings
-├── validation.py      # Input validation
-├── evaluator.py       # Poker hand evaluation logic
-├── simulation.py      # Monte Carlo simulation engine
-├── analytics.py       # Data analysis and graph generation
-├── poker_results.csv  # Generated analytics output
-└── winrate_vs_opponents.png
+```text
+Input Cards
+     │
+     ▼
+Card / Deck Handling
+     │
+     ▼
+Generate Possible Boards
+     │
+     ▼
+Evaluate Hands
+     │
+     ▼
+Compare Results
+     │
+     ▼
+Calculate Equity
 ```
 
----
+For simulation-based calculations, the engine repeatedly generates possible outcomes and aggregates the results to estimate the probability of winning.
 
-## 🧠 How It Works
+## Project Structure
 
-The engine performs Monte Carlo simulation by:
+The project is separated into modules so individual components can be developed and optimized independently.
 
-1. Removing known cards from the deck.
-2. Randomly dealing unknown opponent and community cards.
-3. Evaluating every player's strongest possible 5-card hand.
-4. Comparing the hero hand against all opponents.
-5. Repeating the process thousands of times.
-6. Estimating probabilities from the observed outcomes.
+```text
+poker/
+├── main.py
+├── ...
+└── README.md
+```
 
-As the number of trials increases, the estimated probabilities converge toward the true poker equity.
+The exact module structure may evolve as the engine becomes more sophisticated.
 
----
+## Performance
 
-## 📊 Analytics
+The project originally performed simulations in a single monolithic implementation.
 
-The project automatically generates:
+It was later reorganized into separate modules to improve:
 
-* Win percentage
-* Loss percentage
-* Tie percentage
-* Hand frequency distribution
-* Win Rate vs Opponents graph
-* CSV export for further analysis
+* Maintainability
+* Organization
+* Testing
+* Optimization
+* Reusability
 
----
+Performance is an ongoing focus as simulation counts increase.
 
-## 🛠 Technologies Used
+## Example
+
+A typical interaction can provide known hole cards and optional community cards:
+
+```text
+Enter cards: Ah Kc
+Enter known board cards, or press Enter if none:
+```
+
+The engine then evaluates possible outcomes through simulation.
+
+## Technologies
 
 * Python
-* Pandas
-* Matplotlib
-* itertools
-* Random (Monte Carlo Simulation)
-
----
-
-## ▶️ Running the Project
-
-Clone the repository:
-
-```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-```
-
-Navigate into the project:
-
-```bash
-cd poker_project
-```
-
-Install dependencies:
-
-```bash
-pip install pandas matplotlib
-```
-
-Run:
-
-```bash
-python main.py
-```
-
----
-
-## 📈 Example Analysis
-
-Input:
-
-```
-Hero Cards:
-Ah Kc
-```
-
-The engine automatically analyzes the hand against **1–8 opponents**, exports the results to CSV, and generates a graph showing how the win rate changes as the number of opponents increases.
-
----
-
-## 🎯 Future Improvements
-
-* GUI/Desktop application
-* Starting hand heatmaps
-* Exact probability calculation (non-Monte Carlo)
-* Performance optimizations
-* Poker AI decision engine
-* Equity comparison between multiple starting hands
-* Tournament simulation
-
----
-
-## 👨‍💻 Author
-
-Built as a personal project to explore:
-
-* Algorithms
+* Object-oriented programming
 * Probability
-* Simulation
-* Data Analytics
-* Software Architecture
-* Modular Python Development
+* Monte Carlo simulation
+* Modular programming
 
-This project served as a practical exercise in building a complete software application from scratch.
+## What This Project Taught Me
+
+This project provided practical experience with:
+
+* Breaking a large program into modules
+* Designing reusable functions
+* Probability and simulation
+* Algorithmic optimization
+* Working with card representations
+* Testing and debugging
+* Git and GitHub
+
+## Future Improvements
+
+Potential future development includes:
+
+* [ ] More efficient simulation
+* [ ] Improved hand-evaluation performance
+* [ ] Larger simulation workloads
+* [ ] More advanced equity calculations
+* [ ] GUI
+* [ ] Interactive poker table
+* [ ] Opponent modeling
+* [ ] Strategy analysis
+
+## Author
+
+Built by **Medhansh Singh**.
+
